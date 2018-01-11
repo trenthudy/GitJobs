@@ -25,12 +25,12 @@ public class GitHubJob {
         this.id = id;
     }
 
-    public String getCreated_at() {
+    public String getCreatedAt() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(String createdAt) {
+        this.created_at = createdAt;
     }
 
     public String getTitle() {
@@ -65,12 +65,12 @@ public class GitHubJob {
         this.description = description;
     }
 
-    public String getHow_to_apply() {
+    public String getHowToApply() {
         return how_to_apply;
     }
 
-    public void setHow_to_apply(String how_to_apply) {
-        this.how_to_apply = how_to_apply;
+    public void setHowToApply(String howToApply) {
+        this.how_to_apply = howToApply;
     }
 
     public String getCompany() {
@@ -81,12 +81,12 @@ public class GitHubJob {
         this.company = company;
     }
 
-    public String getCompany_url() {
+    public String getCompanyUrl() {
         return company_url;
     }
 
-    public void setCompany_url(String company_url) {
-        this.company_url = company_url;
+    public void setCompanyUrl(String companyUrl) {
+        this.company_url = companyUrl;
     }
 
     public String getUrl() {
