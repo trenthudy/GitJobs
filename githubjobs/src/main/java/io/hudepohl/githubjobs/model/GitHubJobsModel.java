@@ -4,7 +4,7 @@ import java.util.List;
 
 import io.hudepohl.githubjobs.api.GitHubJobsAPI;
 import io.hudepohl.githubjobs.api.RetrofitFactory;
-import io.hudepohl.githubjobs.obj.Job;
+import io.hudepohl.githubjobs.obj.GitHubJob;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
@@ -22,14 +22,14 @@ public class GitHubJobsModel {
                 .getJobList()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<List<Job>>() {
+                .subscribe(new Observer<List<GitHubJob>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(List<Job> jobs) {
+                    public void onNext(List<GitHubJob> jobs) {
 
                     }
 
@@ -51,14 +51,14 @@ public class GitHubJobsModel {
                 .getJob(gitHubJobId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Job>() {
+                .subscribe(new Observer<GitHubJob>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Job job) {
+                    public void onNext(GitHubJob job) {
 
                     }
 
@@ -76,9 +76,9 @@ public class GitHubJobsModel {
 
     public interface Presenter {
 
-        void onGetJobListSuccess(List<Job> jobList);
+        void onGetJobListSuccess(List<GitHubJob> jobList);
         void onGetJobListFailure();
-        void onGetJobSuccess(Job job);
+        void onGetJobSuccess(GitHubJob job);
         void onGetJobFailure();
 
     }
