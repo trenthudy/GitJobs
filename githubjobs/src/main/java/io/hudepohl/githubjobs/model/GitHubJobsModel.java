@@ -19,7 +19,7 @@ public class GitHubJobsModel {
     public void getGitHubJobsList(int page) {
 
         RetrofitFactory.getRetrofitService(GitHubJobsAPI.class, GitHubJobsAPI.BASE_URL)
-                .getJobList()
+                .getJobList(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<GitHubJob>>() {
