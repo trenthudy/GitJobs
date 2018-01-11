@@ -4,8 +4,8 @@ import java.util.List;
 
 import io.hudepohl.githubjobs.obj.GitHubJob;
 import io.reactivex.Observable;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 /**
  * Created by trent on 1/11/18.
@@ -20,7 +20,7 @@ public interface GitHubJobsAPI {
 
     @GET("/positions/{job_id}.json")
     Observable<GitHubJob> getJob(
-            @Field("job_id") String jobId
+            @Path("job_id") String jobId
     );
 
 }
