@@ -1,4 +1,4 @@
-package io.hudepohl.githubjobs;
+package io.hudepohl.github_jobs;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

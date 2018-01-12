@@ -23,7 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.hudepohl.githubjobs.obj.GitHubJob;
+import io.hudepohl.github_jobs.data.api.model.GitHubJob;
 import io.hudepohl.gitjobs.util.EndlessScrollListener;
 
 public class MainActivity extends AppCompatActivity implements MainPresenter.View {

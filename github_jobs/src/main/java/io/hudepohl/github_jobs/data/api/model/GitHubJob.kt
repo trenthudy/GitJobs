@@ -1,4 +1,4 @@
-package io.hudepohl.githubjobs.obj
+package io.hudepohl.github_jobs.data.api.model
 
 /**
  * Created by trent on 1/11/18.

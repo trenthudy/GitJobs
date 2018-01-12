@@ -2,23 +2,23 @@ package io.hudepohl.gitjobs;
 
 import java.util.List;
 
-import io.hudepohl.githubjobs.model.GitHubJobsModel;
-import io.hudepohl.githubjobs.obj.GitHubJob;
+import io.hudepohl.github_jobs.data.api.GitHubJobsInteractor;
+import io.hudepohl.github_jobs.data.api.model.GitHubJob;
 
 /**
  * Created by trent on 1/11/18.
  */
 
-public class MainPresenter implements GitHubJobsModel.Presenter {
+public class MainPresenter implements GitHubJobsInteractor.Presenter {
 
     private MainPresenter.View mView;
-    private GitHubJobsModel mGitHubJobsModel;
+    private GitHubJobsInteractor mGitHubJobsModel;
 
     private int page = 1;
 
     MainPresenter(MainPresenter.View view) {
         mView = view;
-        mGitHubJobsModel = new GitHubJobsModel(this);
+        mGitHubJobsModel = new GitHubJobsInteractor(this);
     }
 
     void init() {
