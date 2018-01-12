@@ -112,10 +112,12 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
     }
 
-    private class GitHubJobAdaptor extends ArrayAdapter<GitHubJob> {
+    class GitHubJobAdaptor extends ArrayAdapter<GitHubJob> {
 
-        ImageView mCompanyLogo;
-        TextView mCompanyNameText, mPositionTitleText, mPositionLocationText;
+        @BindView(R.id.job_list_item_image) ImageView mCompanyLogo;
+        @BindView(R.id.job_list_item_company_name_tv) TextView mCompanyNameText;
+        @BindView(R.id.job_list_item_position_title_tv) TextView mPositionTitleText;
+        @BindView(R.id.job_list_item_position_location_tv) TextView mPositionLocationText;
 
         GitHubJobAdaptor() {
             super(MainActivity.this, R.layout.job_list_item, mJobList);
@@ -129,11 +131,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
                 view = inflater.inflate(R.layout.job_list_item, parent, false);
             }
 
-            // TODO: Refactor this to use ButterKnife.
-            mCompanyLogo = view.findViewById(R.id.job_list_item_image);
-            mCompanyNameText = view.findViewById(R.id.job_list_item_company_name_tv);
-            mPositionTitleText = view.findViewById(R.id.job_list_item_position_title_tv);
-            mPositionLocationText = view.findViewById(R.id.job_list_item_position_location_tv);
+            ButterKnife.bind(this, view);
 
             final GitHubJob currentJob = mJobList.get(position);
 
