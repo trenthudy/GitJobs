@@ -7,7 +7,7 @@
     android:layout_alignParentBottom="true"
     android:gravity="center"
     android:padding="3dp"
-    android:visibility="gone">
+    android:visibility="visible">
 
     <ProgressBar
         android:id="@+id/progress"
