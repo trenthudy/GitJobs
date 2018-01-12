@@ -14,24 +14,36 @@ public class MainPresenter implements GitHubJobsModel.Presenter {
     private MainPresenter.View mView;
     private GitHubJobsModel mGitHubJobsModel;
 
-    public MainPresenter(MainPresenter.View view) {
+    private int page = 1;
 
+    MainPresenter(MainPresenter.View view) {
         mView = view;
         mGitHubJobsModel = new GitHubJobsModel(this);
     }
 
     void init() {
+        mView.showPageLoadingDialog();
+        mGitHubJobsModel.getGitHubJobsList(page);
+    }
 
+    void getNextPage() {
+        mView.showPageLoadingDialog();
+        mGitHubJobsModel.getGitHubJobsList(++page);
     }
 
     @Override
     public void onGetJobListSuccess(List<GitHubJob> jobList) {
-
+        if (page == 1) {
+            mView.initializeJobList(jobList);
+        } else {
+            mView.addJobsToList(jobList);
+        }
+        mView.hidePageLoadingDialog();
     }
 
     @Override
     public void onGetJobListFailure() {
-
+        mView.showGetJobListError();
     }
 
     @Override
@@ -46,7 +58,12 @@ public class MainPresenter implements GitHubJobsModel.Presenter {
 
     interface View {
 
-
+        void hideEmptyListPlaceholder();
+        void initializeJobList(List<GitHubJob> jobs);
+        void addJobsToList(List<GitHubJob> jobs);
+        void showPageLoadingDialog();
+        void hidePageLoadingDialog();
+        void showGetJobListError();
 
     }
 
