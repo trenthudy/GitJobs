@@ -1,5 +1,6 @@
-package io.hudepohl.gitjobs;
+package io.hudepohl.gitjobs.ui.main;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -24,9 +25,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.hudepohl.github_jobs.data.api.model.GitHubJob;
+import io.hudepohl.gitjobs.R;
+import io.hudepohl.gitjobs.ui.BaseActivity;
+import io.hudepohl.gitjobs.ui.job_detail.JobDetailActivity;
+import io.hudepohl.gitjobs.ui.job_detail.JobDetailPresenter;
+import io.hudepohl.gitjobs.util.ConstKey;
 import io.hudepohl.gitjobs.util.EndlessScrollListener;
 
-public class MainActivity extends AppCompatActivity implements MainPresenter.View {
+public class MainActivity extends BaseActivity implements MainPresenter.View {
 
     private MainPresenter mPresenter;
 
@@ -70,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
         mJobListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                moveToJobDetails(mJobList.get(i));
             }
         });
         mJobListView.setOnScrollListener(new EndlessScrollListener() {
@@ -102,13 +108,18 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
     public void showGetJobListError() {
         Toast.makeText(
                 getApplicationContext(),
-                getString(R.string.err_failed_to_load),
+                getString(R.string.err_failed_to_load_jobs),
                 Toast.LENGTH_LONG
         ).show();
     }
 
     private void moveToJobDetails(GitHubJob job) {
+        Bundle bundle = new Bundle();
+        bundle.putString(ConstKey.JOB_ID, job.getId());
 
+        Intent jobDetailsActivity = new Intent(this, JobDetailActivity.class);
+        jobDetailsActivity.putExtras(bundle);
+        startActivity(jobDetailsActivity);
     }
 
     class GitHubJobAdaptor extends ArrayAdapter<GitHubJob> {

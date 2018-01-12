@@ -1,4 +1,4 @@
-package io.hudepohl.gitjobs;
+package io.hudepohl.gitjobs.ui.main;
 
 import java.util.List;
 
