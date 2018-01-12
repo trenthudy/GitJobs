@@ -15,6 +15,7 @@ public class GitHubJob {
     public String how_to_apply;
     public String company;
     public String company_url;
+    public String company_logo;
     public String url;
 
     public String getId() {
@@ -87,6 +88,14 @@ public class GitHubJob {
 
     public void setCompanyUrl(String companyUrl) {
         this.company_url = companyUrl;
+    }
+
+    public String getCompanyLogo() {
+        return company_logo;
+    }
+
+    public void setCompanyLogo(String companyLogo) {
+        this.company_logo = companyLogo;
     }
 
     public String getUrl() {

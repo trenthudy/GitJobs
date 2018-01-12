@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -120,6 +122,11 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
             mPositionLocationText = view.findViewById(R.id.job_list_item_position_location_tv);
 
             final GitHubJob currentJob = mJobList.get(position);
+
+            Glide
+                    .with(mCompanyLogo.getContext())
+                    .load(currentJob.getCompanyLogo())
+                    .into(mCompanyLogo);
 
             mCompanyNameText.setText(currentJob.getCompany());
             mPositionTitleText.setText(currentJob.getTitle());
