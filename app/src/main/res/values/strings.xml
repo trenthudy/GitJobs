@@ -5,4 +5,10 @@
     <string name="err_failed_to_load_jobs">Failed to load jobs. Try again later.</string>
     <string name="err_failed_to_load_job_details">Failed to load job details.</string>
     <string name="lbl_description">Description</string>
+    <string name="lbl_addition_information">Additional Information</string>
+    <string name="lbl_position_type">Position Type</string>
+    <string name="lbl_how_to_apply">How To Apply</string>
+    <string name="lbl_company_website">Company Website</string>
+    <string name="lbl_github_source">GitHub Jobs Source</string>
+    <string name="lbl_date_of_listing">Date/Time of Listing</string>
 </resources>

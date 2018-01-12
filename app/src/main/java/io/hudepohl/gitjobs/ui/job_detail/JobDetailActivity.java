@@ -57,6 +57,10 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
     @Override
     public void configureJobInfo(GitHubJob job) {
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(job.getTitle());
+        }
+
         Glide
                 .with(mJobDetailImageView.getContext())
                 .load(job.getCompany_logo())

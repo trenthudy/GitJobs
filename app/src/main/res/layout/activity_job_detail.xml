@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -57,7 +57,7 @@
                     android:layout_marginTop="6dp"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:textSize="16sp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:id="@+id/job_detail_position_location_tv"
@@ -71,6 +71,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/job_detail_desc_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/job_detail_image_layout"
@@ -82,8 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/lbl_description"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -91,6 +92,129 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/job_detail_desc_layout"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/job_detail_addditional_info_label_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_addition_information"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="@string/lbl_position_type"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Full Time"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="@string/lbl_how_to_apply"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Please contact Jenny at jenny@company.com"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="@string/lbl_company_website"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="https://www.apple.com"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="@string/lbl_github_source"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="https://www.github.com/jobs/32498756"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:text="@string/lbl_date_of_listing"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12sp"
+                        android:text="Friday Jan 13, 2017 12:45:32 UCT "/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
