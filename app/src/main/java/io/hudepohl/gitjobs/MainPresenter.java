@@ -39,9 +39,6 @@ public class MainPresenter implements GitHubJobsModel.Presenter {
 
     @Override
     public void onGetJobListSuccess(List<GitHubJob> jobList) {
-
-        // TODO: Add validation to job list returned...
-
         if (page == 1) {
             mView.initializeJobList(jobList);
         } else {

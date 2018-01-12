@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
             Glide
                     .with(mCompanyLogo.getContext())
-                    .load(currentJob.getCompanyLogo())
+                    .load(currentJob.getCompany_logo())
                     .into(mCompanyLogo);
 
             mCompanyNameText.setText(currentJob.getCompany());
