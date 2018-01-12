@@ -31,6 +31,12 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
     @BindView(R.id.job_detail_position_location_tv) TextView mJobDetailPositionLocationTextView;
     @BindView(R.id.job_detail_desc_tv) TextView mJobDetailDescriptionTextView;
 
+    @BindView(R.id.job_detail_position_type_tv) TextView mJobDetailPositionTypeTextView;
+    @BindView(R.id.job_detail_how_to_apply_tv) TextView mJobDetailHowToApplyTextView;
+    @BindView(R.id.job_detail_company_website_tv) TextView mJobDetailCompanyWebsiteTextView;
+    @BindView(R.id.job_detail_github_source_tv) TextView mJobDetailGitHubSourceTextView;
+    @BindView(R.id.job_detail_date_tv) TextView mJobDetailListingDateTextView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +79,12 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
         mJobDetailDescriptionTextView.setText(
                 Html.fromHtml(job.getDescription())
         );
+
+        mJobDetailPositionTypeTextView.setText(job.getType());
+        mJobDetailHowToApplyTextView.setText(Html.fromHtml(job.getHow_to_apply()));
+        mJobDetailCompanyWebsiteTextView.setText(job.getCompany_url());
+        mJobDetailGitHubSourceTextView.setText(job.getUrl());
+        mJobDetailListingDateTextView.setText(job.getCreated_at());
     }
 
     @Override

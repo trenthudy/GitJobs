@@ -96,9 +96,33 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/job_detail_how_to_apply_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/job_detail_desc_layout"
+                android:padding="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="@string/lbl_how_to_apply"/>
+
+                <TextView
+                    android:id="@+id/job_detail_how_to_apply_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/job_detail_how_to_apply_layout"
                 android:padding="10dp"
                 android:orientation="vertical">
 
@@ -125,31 +149,10 @@
                         android:text="@string/lbl_position_type"/>
 
                     <TextView
+                        android:id="@+id/job_detail_position_type_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="Full Time"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/lbl_how_to_apply"/>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="Please contact Jenny at jenny@company.com"/>
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
 
@@ -167,10 +170,10 @@
                         android:text="@string/lbl_company_website"/>
 
                     <TextView
+                        android:id="@+id/job_detail_company_website_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="https://www.apple.com"/>
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
 
@@ -188,10 +191,10 @@
                         android:text="@string/lbl_github_source"/>
 
                     <TextView
+                        android:id="@+id/job_detail_github_source_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="https://www.github.com/jobs/32498756"/>
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
 
@@ -209,10 +212,10 @@
                         android:text="@string/lbl_date_of_listing"/>
 
                     <TextView
+                        android:id="@+id/job_detail_date_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
-                        android:text="Friday Jan 13, 2017 12:45:32 UCT "/>
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
 
