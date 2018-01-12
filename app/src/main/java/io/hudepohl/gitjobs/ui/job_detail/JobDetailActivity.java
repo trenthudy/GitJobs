@@ -2,6 +2,7 @@ package io.hudepohl.gitjobs.ui.job_detail;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.Html;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,7 +55,10 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
         mJobDetailCompanyTextView.setText(job.getCompany());
         mJobDetailPositionTitleTextView.setText(job.getTitle());
         mJobDetailPositionLocationTextView.setText(job.getLocation());
-        mJobDetailDescriptionTextView.setText(job.getDescription());
+
+        mJobDetailDescriptionTextView.setText(
+                Html.fromHtml(job.getDescription())
+        );
     }
 
     @Override
