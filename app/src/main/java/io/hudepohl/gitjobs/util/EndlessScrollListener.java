@@ -7,6 +7,9 @@ import android.widget.AbsListView;
  */
 
 public abstract class EndlessScrollListener implements AbsListView.OnScrollListener {
+
+    // TODO: Remove all the comments from this class...
+
     // The minimum number of items to have below your current scroll position
     // before loading more.
     private int visibleThreshold = 5;

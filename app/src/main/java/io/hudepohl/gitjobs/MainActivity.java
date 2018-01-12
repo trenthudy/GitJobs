@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
     @Override
     public void addJobsToList(List<GitHubJob> jobs) {
-
+        mJobList.addAll(jobs);
+        ((ArrayAdapter) mJobListView.getAdapter()).notifyDataSetChanged();
     }
 
     @Override
