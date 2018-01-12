@@ -1,7 +1,7 @@
 package io.hudepohl.githubjobs.model
 
-import io.hudepohl.githubjobs.api.GitHubJobsAPI
-import io.hudepohl.githubjobs.api.RetrofitFactory
+import io.hudepohl.githubjobs.http.api.GitHubJobsAPI
+import io.hudepohl.githubjobs.http.RetrofitFactory
 import io.hudepohl.githubjobs.obj.GitHubJob
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +16,7 @@ class GitHubJobsModel(private val mPresenter: GitHubJobsModel.Presenter) {
 
     fun getGitHubJobsList(page: Int) {
 
-        RetrofitFactory.getRetrofitService<GitHubJobsAPI>(GitHubJobsAPI::class.java, GitHubJobsAPI.BASE_URL)
+        RetrofitFactory.getRetrofitService(GitHubJobsAPI::class.java, GitHubJobsAPI.BASE_URL)
                 .getJobList(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -41,7 +41,7 @@ class GitHubJobsModel(private val mPresenter: GitHubJobsModel.Presenter) {
 
     fun getGitHubJob(gitHubJobId: String) {
 
-        RetrofitFactory.getRetrofitService<GitHubJobsAPI>(GitHubJobsAPI::class.java, GitHubJobsAPI.BASE_URL)
+        RetrofitFactory.getRetrofitService(GitHubJobsAPI::class.java, GitHubJobsAPI.BASE_URL)
                 .getJob(gitHubJobId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())

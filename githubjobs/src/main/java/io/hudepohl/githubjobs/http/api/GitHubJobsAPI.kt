@@ -1,4 +1,4 @@
-package io.hudepohl.githubjobs.api
+package io.hudepohl.githubjobs.http.api
 
 import io.hudepohl.githubjobs.obj.GitHubJob
 import io.reactivex.Observable
