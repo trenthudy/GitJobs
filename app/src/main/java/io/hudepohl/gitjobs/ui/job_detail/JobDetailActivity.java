@@ -36,12 +36,22 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_detail);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
         ButterKnife.bind(this);
 
         mPresenter = new JobDetailPresenter(this);
         String foundId = getIntent().getExtras().getString(ConstKey.JOB_ID);
         Log.i(JobDetailActivity.class.getSimpleName(), foundId);
         mPresenter.getJobInfo(foundId);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 
     @Override
