@@ -58,7 +58,6 @@ public class MainPresenter implements GitHubJobsModel.Presenter {
 
     interface View {
 
-        void hideEmptyListPlaceholder();
         void initializeJobList(List<GitHubJob> jobs);
         void addJobsToList(List<GitHubJob> jobs);
         void showPageLoadingDialog();
