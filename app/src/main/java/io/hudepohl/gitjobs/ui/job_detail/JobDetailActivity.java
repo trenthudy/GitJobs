@@ -3,8 +3,14 @@ package io.hudepohl.gitjobs.ui.job_detail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import io.hudepohl.github_jobs.data.api.model.GitHubJob;
 import io.hudepohl.gitjobs.R;
 import io.hudepohl.gitjobs.ui.BaseActivity;
@@ -18,10 +24,18 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
 
     private JobDetailPresenter mPresenter;
 
+    @BindView(R.id.job_detail_image) ImageView mJobDetailImageView;
+    @BindView(R.id.job_detail_company_name_tv) TextView mJobDetailCompanyTextView;
+    @BindView(R.id.job_detail_position_title_tv) TextView mJobDetailPositionTitleTextView;
+    @BindView(R.id.job_detail_position_location_tv) TextView mJobDetailPositionLocationTextView;
+    @BindView(R.id.job_detail_desc_tv) TextView mJobDetailDescriptionTextView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_job_detail);
+
+        ButterKnife.bind(this);
 
         mPresenter = new JobDetailPresenter(this);
         String foundId = getIntent().getExtras().getString(ConstKey.JOB_ID);
@@ -31,7 +45,16 @@ public class JobDetailActivity extends BaseActivity implements JobDetailPresente
 
     @Override
     public void configureJobInfo(GitHubJob job) {
-        Toast.makeText(this.getApplicationContext(), job.getLocation(), Toast.LENGTH_SHORT).show();
+
+        Glide
+                .with(mJobDetailImageView.getContext())
+                .load(job.getCompany_logo())
+                .into(mJobDetailImageView);
+
+        mJobDetailCompanyTextView.setText(job.getCompany());
+        mJobDetailPositionTitleTextView.setText(job.getTitle());
+        mJobDetailPositionLocationTextView.setText(job.getLocation());
+        mJobDetailDescriptionTextView.setText(job.getDescription());
     }
 
     @Override
