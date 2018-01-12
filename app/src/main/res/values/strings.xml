@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">GitJobs</string>
+    <string name="toolbar_title">Welcome to GitJobs</string>
     <string name="lbl_loading_more_items">Loading more items...</string>
     <string name="err_failed_to_load">Failed to load jobs. Try again later.</string>
 </resources>
