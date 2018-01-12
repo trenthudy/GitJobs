@@ -30,11 +30,6 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
     }
 
     @Override
-    public void hideEmptyListPlaceholder() {
-
-    }
-
-    @Override
     public void initializeJobList(List<GitHubJob> jobs) {
 
     }
@@ -58,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
     public void showGetJobListError() {
         Toast.makeText(
                 getApplicationContext(),
-                getString(R.string.lbl_load_error_text),
+                getString(R.string.err_failed_to_load),
                 Toast.LENGTH_LONG
         ).show();
     }
