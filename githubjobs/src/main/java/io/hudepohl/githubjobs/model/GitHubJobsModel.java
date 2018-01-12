@@ -16,6 +16,13 @@ import io.reactivex.schedulers.Schedulers;
 
 public class GitHubJobsModel {
 
+    private GitHubJobsModel.Presenter mPresenter;
+
+    public GitHubJobsModel(GitHubJobsModel.Presenter presenter) {
+
+        mPresenter = presenter;
+    }
+
     public void getGitHubJobsList(int page) {
 
         RetrofitFactory.getRetrofitService(GitHubJobsAPI.class, GitHubJobsAPI.BASE_URL)
@@ -30,12 +37,12 @@ public class GitHubJobsModel {
 
                     @Override
                     public void onNext(List<GitHubJob> jobs) {
-
+                        mPresenter.onGetJobListSuccess(jobs);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        mPresenter.onGetJobListFailure();
                     }
 
                     @Override
@@ -59,12 +66,12 @@ public class GitHubJobsModel {
 
                     @Override
                     public void onNext(GitHubJob job) {
-
+                        mPresenter.onGetJobSuccess(job);
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        mPresenter.onGetJobFailure();
                     }
 
                     @Override
