@@ -22,7 +22,13 @@ public class MainPresenter implements GitHubJobsModel.Presenter {
     }
 
     void init() {
+        page = 1;
         mView.showPageLoadingDialog();
+        mGitHubJobsModel.getGitHubJobsList(page);
+    }
+
+    void refresh() {
+        page = 1;
         mGitHubJobsModel.getGitHubJobsList(page);
     }
 

@@ -43,12 +43,25 @@ public class MainActivity extends AppCompatActivity implements MainPresenter.Vie
 
         ButterKnife.bind(this);
 
+        getSupportActionBar().setTitle(getString(R.string.toolbar_title));
+
         mPresenter = new MainPresenter(this);
+
+        mJobListRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPresenter.refresh();
+            }
+        });
+
         mPresenter.init();
     }
 
     @Override
     public void initializeJobList(List<GitHubJob> jobs) {
+        if (mJobListRefreshLayout.isRefreshing()) {
+            mJobListRefreshLayout.setRefreshing(false);
+        }
 
         mJobList = new ArrayList<>();
         mJobList.addAll(jobs);
