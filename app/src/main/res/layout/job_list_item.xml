@@ -11,12 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:padding="5dp" >
+        android:padding="8dp" >
 
         <ImageView
             android:id="@+id/job_list_item_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp" />
+            android:layout_width="75dp"
+            android:layout_height="75dp" />
 
     </LinearLayout>
 
@@ -29,7 +29,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_alignBottom="@+id/job_list_item_image_layout"
-        android:padding="6dp"
+        android:padding="8dp"
         android:orientation="vertical" >
 
         <TextView
