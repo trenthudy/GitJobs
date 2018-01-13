@@ -86,13 +86,8 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {
             val retView: View = when (view) {
-                null -> {
-                    val inflater = LayoutInflater.from(context)
-                    inflater.inflate(R.layout.job_list_item, parent, false)
-                }
-                else -> {
-                    view
-                }
+                null -> LayoutInflater.from(context).inflate(R.layout.job_list_item, parent, false)
+                else -> view
             }
 
             val (_, _, title, location, _, _, _, company, _, company_logo) = mJobList[position]
