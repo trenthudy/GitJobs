@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/job_list_item_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
     <LinearLayout
-        android:id="@+id/job_list_item_image_layout"
+        android:id="@+id/job_list_item_company_logo_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:padding="8dp" >
+        android:padding="8dp">
 
         <ImageView
-            android:id="@+id/job_list_item_image"
+            android:id="@+id/job_list_item_company_logo_iv"
             android:layout_width="75dp"
-            android:layout_height="75dp" />
+            android:layout_height="75dp"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/job_list_item_image_layout"
-        android:layout_toEndOf="@+id/job_list_item_image_layout"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/job_list_item_company_logo_layout"
+        android:layout_toRightOf="@+id/job_list_item_company_logo_layout"
+        android:layout_toEndOf="@+id/job_list_item_company_logo_layout"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignBottom="@+id/job_list_item_image_layout"
         android:padding="8dp"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/job_list_item_company_name_tv"
@@ -39,7 +40,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/job_list_item_position_title_tv"
@@ -48,7 +49,7 @@
             android:layout_marginTop="2dp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="13sp" />
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/job_list_item_position_location_tv"
@@ -57,7 +58,7 @@
             android:layout_marginTop="2dp"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="13sp" />
+            android:textSize="13sp"/>
 
     </LinearLayout>
 

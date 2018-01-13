@@ -1,4 +1,4 @@
-package io.hudepohl.github_jobs.data.data
+package io.hudepohl.github_jobs.data
 
 import io.hudepohl.github_jobs.data.data.model.GitHubJob
 import io.reactivex.Observable

@@ -14,18 +14,18 @@
             android:id="@+id/job_list_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pagination_loading_layout">
+            android:layout_above="@+id/pagination_loading_progress">
 
             <ListView
-                android:id="@+id/lv_job_list"
+                android:id="@+id/job_list_lv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
         <include
-            layout="@layout/progress_layout"
-            android:id="@+id/pagination_loading_layout"/>
+            layout="@layout/progress"
+            android:id="@+id/pagination_loading_progress"/>
 
     </RelativeLayout>
 

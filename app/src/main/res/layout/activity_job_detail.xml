@@ -19,18 +19,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primary"
-                android:padding="10dp"
-                android:elevation="4dp">
+                android:elevation="4dp"
+                android:padding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/job_detail_image_layout"
+                    android:id="@+id/job_detail_company_logo_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true">
 
                     <ImageView
-                        android:id="@+id/job_detail_image"
+                        android:id="@+id/job_detail_company_logo_iv"
                         android:layout_width="110dp"
                         android:layout_height="110dp"/>
 
@@ -39,12 +39,12 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/job_detail_image_layout"
-                    android:layout_toEndOf="@+id/job_detail_image_layout"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignBottom="@+id/job_detail_company_logo_layout"
+                    android:layout_toRightOf="@+id/job_detail_company_logo_layout"
+                    android:layout_toEndOf="@+id/job_detail_company_logo_layout"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignBottom="@+id/job_detail_image_layout"
                     android:layout_marginLeft="15dp"
                     android:layout_marginStart="15dp"
                     android:orientation="vertical">
@@ -92,11 +92,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/job_detail_desc_label_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/lbl_description"
                     android:layout_marginBottom="10dp"
+                    android:text="@string/lbl_description"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -120,9 +119,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
+                    android:text="@string/lbl_how_to_apply"
                     android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:text="@string/lbl_how_to_apply"/>
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/job_detail_how_to_apply_tv"
@@ -140,11 +139,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/job_detail_addditional_info_label_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/lbl_addition_information"
                     android:layout_marginBottom="10dp"
+                    android:text="@string/lbl_addition_information"
                     android:textSize="18sp"
                     android:textStyle="bold"/>
 
@@ -157,9 +155,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/lbl_position_type"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/lbl_position_type"/>
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/job_detail_position_type_tv"
@@ -178,9 +176,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/lbl_company_website"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/lbl_company_website"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/job_detail_company_website_tv"
@@ -199,9 +197,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/lbl_github_source"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/lbl_github_source"/>
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:id="@+id/job_detail_github_source_tv"
@@ -220,12 +218,12 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@string/lbl_date_of_listing"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:text="@string/lbl_date_of_listing"/>
+                        android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/job_detail_date_tv"
+                        android:id="@+id/job_detail_date_of_listing_tv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"/>

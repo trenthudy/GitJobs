@@ -37,8 +37,8 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     private List<GitHubJob> mJobList;
 
     @BindView(R.id.job_list_refresh_layout) SwipeRefreshLayout mJobListRefreshLayout;
-    @BindView(R.id.pagination_loading_layout) RelativeLayout mPageLoadingDialog;
-    @BindView(R.id.lv_job_list) ListView mJobListView;
+    @BindView(R.id.pagination_loading_progress) RelativeLayout mPageLoadingDialog;
+    @BindView(R.id.job_list_lv) ListView mJobListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
 
         ButterKnife.bind(this);
 
-        getSupportActionBar().setTitle(getString(R.string.toolbar_title));
+        getSupportActionBar().setTitle(getString(R.string.toolbar_welcome_msg));
 
         mPresenter = new MainPresenter(this);
 
@@ -122,7 +122,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
 
     class GitHubJobAdaptor extends ArrayAdapter<GitHubJob> {
 
-        @BindView(R.id.job_list_item_image) ImageView mCompanyLogo;
+        @BindView(R.id.job_list_item_company_logo_iv) ImageView mCompanyLogo;
         @BindView(R.id.job_list_item_company_name_tv) TextView mCompanyNameText;
         @BindView(R.id.job_list_item_position_title_tv) TextView mPositionTitleText;
         @BindView(R.id.job_list_item_position_location_tv) TextView mPositionLocationText;
