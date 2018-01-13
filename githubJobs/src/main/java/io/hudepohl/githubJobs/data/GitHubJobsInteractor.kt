@@ -1,7 +1,7 @@
-package io.hudepohl.github_jobs.data
+package io.hudepohl.githubJobs.data
 
-import io.hudepohl.github_jobs.http.RetrofitFactory
-import io.hudepohl.github_jobs.data.data.model.GitHubJob
+import io.hudepohl.githubJobs.http.RetrofitFactory
+import io.hudepohl.githubJobs.data.model.GitHubJob
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

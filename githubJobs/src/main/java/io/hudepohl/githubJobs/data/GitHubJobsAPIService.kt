@@ -1,6 +1,6 @@
-package io.hudepohl.github_jobs.data
+package io.hudepohl.githubJobs.data
 
-import io.hudepohl.github_jobs.data.data.model.GitHubJob
+import io.hudepohl.githubJobs.data.model.GitHubJob
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

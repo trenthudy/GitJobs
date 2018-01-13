@@ -1,4 +1,4 @@
-package io.hudepohl.github_jobs.http
+package io.hudepohl.githubJobs.http
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

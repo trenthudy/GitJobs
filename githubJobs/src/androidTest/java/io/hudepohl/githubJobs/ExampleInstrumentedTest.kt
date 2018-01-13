@@ -1,6 +1,5 @@
-package io.hudepohl.github_jobs
+package io.hudepohl.githubJobs
 
-import android.content.Context
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 

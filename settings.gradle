@@ -1,1 +1,1 @@
-include ':app', ':github_jobs'
+include ':app', ':githubJobs'

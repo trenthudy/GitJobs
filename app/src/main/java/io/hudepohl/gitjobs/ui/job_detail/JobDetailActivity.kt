@@ -6,7 +6,7 @@ import android.widget.Toast
 
 import com.bumptech.glide.Glide
 
-import io.hudepohl.github_jobs.data.data.model.GitHubJob
+import io.hudepohl.githubJobs.data.data.model.GitHubJob
 import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.util.ConstKey

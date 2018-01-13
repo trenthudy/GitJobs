@@ -1,4 +1,4 @@
-package io.hudepohl.github_jobs
+package io.hudepohl.githubJobs
 
 import org.junit.Test
 
