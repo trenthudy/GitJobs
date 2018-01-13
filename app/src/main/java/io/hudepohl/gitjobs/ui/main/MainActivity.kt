@@ -45,7 +45,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
         job_list_lv.setOnItemClickListener({ _, _, i, _ -> moveToJobDetails(mJobList[i]) })
         job_list_lv.setOnScrollListener(object : EndlessScrollListener() {
             override fun onLoadMore(page: Int, totalItemsCount: Int): Boolean {
-                mPresenter!!.getNextPage()
+                mPresenter.getNextPage()
                 return true
             }
         })
@@ -53,7 +53,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
     override fun addJobsToList(jobs: List<GitHubJob>) {
         mJobList.addAll(jobs)
-        (job_list_lv.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+        (job_list_lv.adapter as GitHubJobAdaptor).notifyDataSetChanged()
     }
 
     override fun showPageLoadingDialog() {
@@ -85,12 +85,14 @@ class MainActivity : BaseActivity(), MainPresenter.View {
             ArrayAdapter<GitHubJob>(this@MainActivity, R.layout.job_list_item, mJobList) {
 
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-            var retView: View
-            if (view == null) {
-                val inflater = LayoutInflater.from(context)
-                retView = inflater.inflate(R.layout.job_list_item, parent, false)
-            } else {
-                retView = view
+            val retView: View = when (view) {
+                null -> {
+                    val inflater = LayoutInflater.from(context)
+                    inflater.inflate(R.layout.job_list_item, parent, false)
+                }
+                else -> {
+                    view
+                }
             }
 
             val (_, _, title, location, _, _, _, company, _, company_logo) = mJobList[position]
