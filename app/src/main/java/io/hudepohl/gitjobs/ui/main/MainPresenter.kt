@@ -1,7 +1,7 @@
 package io.hudepohl.gitjobs.ui.main
 
-import io.hudepohl.githubJobs.data.data.GitHubJobsInteractor
-import io.hudepohl.githubJobs.data.data.model.GitHubJob
+import io.hudepohl.githubJobs.data.GitHubJobsInteractor
+import io.hudepohl.githubJobs.data.model.GitHubJob
 
 /**
  * Created by trent on 1/11/18.

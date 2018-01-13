@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.job_detail.JobDetailActivity">
+        <activity android:name=".ui.jobDetail.JobDetailActivity">
             <intent-filter>
                 <action android:name="io.hudepohl.gitjobs.JobDetailActivity" />
 

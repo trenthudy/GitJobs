@@ -1,4 +1,4 @@
-package io.hudepohl.gitjobs.ui.job_detail
+package io.hudepohl.gitjobs.ui.jobDetail
 
 import android.os.Bundle
 import android.text.Html
@@ -6,7 +6,7 @@ import android.widget.Toast
 
 import com.bumptech.glide.Glide
 
-import io.hudepohl.githubJobs.data.data.model.GitHubJob
+import io.hudepohl.githubJobs.data.model.GitHubJob
 import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.util.ConstKey
