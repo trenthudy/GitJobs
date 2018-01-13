@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.hudepohl.github_jobs.data.api.model.GitHubJob;
+import io.hudepohl.github_jobs.data.data.model.GitHubJob;
 import io.hudepohl.gitjobs.R;
 import io.hudepohl.gitjobs.ui.BaseActivity;
 import io.hudepohl.gitjobs.util.ConstKey;

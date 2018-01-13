@@ -1,6 +1,6 @@
-package io.hudepohl.github_jobs.data.api
+package io.hudepohl.github_jobs.data.data
 
-import io.hudepohl.github_jobs.data.api.model.GitHubJob
+import io.hudepohl.github_jobs.data.data.model.GitHubJob
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +10,11 @@ import retrofit2.http.Query
  * Created by trent on 1/11/18.
  */
 
-interface GitHubJobsService {
+interface GitHubJobsAPIService {
+
+    companion object {
+        const val BASE_URL = "https://jobs.github.com"
+    }
 
     @GET("/positions.json")
     fun getJobList(
@@ -21,10 +25,4 @@ interface GitHubJobsService {
     fun getJob(
             @Path("job_id") jobId: String
     ): Observable<GitHubJob>
-
-    companion object {
-
-        val BASE_URL = "https://jobs.github.com"
-    }
-
 }

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +23,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.hudepohl.github_jobs.data.api.model.GitHubJob;
+import io.hudepohl.github_jobs.data.data.model.GitHubJob;
 import io.hudepohl.gitjobs.R;
 import io.hudepohl.gitjobs.ui.BaseActivity;
 import io.hudepohl.gitjobs.ui.job_detail.JobDetailActivity;
-import io.hudepohl.gitjobs.ui.job_detail.JobDetailPresenter;
 import io.hudepohl.gitjobs.util.ConstKey;
 import io.hudepohl.gitjobs.util.EndlessScrollListener;
 

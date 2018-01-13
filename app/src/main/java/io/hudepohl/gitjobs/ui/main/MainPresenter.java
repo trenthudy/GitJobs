@@ -2,8 +2,8 @@ package io.hudepohl.gitjobs.ui.main;
 
 import java.util.List;
 
-import io.hudepohl.github_jobs.data.api.GitHubJobsInteractor;
-import io.hudepohl.github_jobs.data.api.model.GitHubJob;
+import io.hudepohl.github_jobs.data.data.GitHubJobsInteractor;
+import io.hudepohl.github_jobs.data.data.model.GitHubJob;
 
 /**
  * Created by trent on 1/11/18.

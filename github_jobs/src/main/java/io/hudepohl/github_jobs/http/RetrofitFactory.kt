@@ -11,7 +11,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitFactory {
 
     fun <T> getRetrofitService(clazz: Class<T>, baseURL: String): T {
-
         return Retrofit.Builder()
                 .baseUrl(baseURL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -19,5 +18,4 @@ object RetrofitFactory {
                 .build()
                 .create(clazz)
     }
-
 }

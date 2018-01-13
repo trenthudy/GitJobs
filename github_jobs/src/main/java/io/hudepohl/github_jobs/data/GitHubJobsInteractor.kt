@@ -1,7 +1,7 @@
-package io.hudepohl.github_jobs.data.api
+package io.hudepohl.github_jobs.data.data
 
 import io.hudepohl.github_jobs.http.RetrofitFactory
-import io.hudepohl.github_jobs.data.api.model.GitHubJob
+import io.hudepohl.github_jobs.data.data.model.GitHubJob
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -14,8 +14,7 @@ import io.reactivex.schedulers.Schedulers
 class GitHubJobsInteractor(private val mPresenter: Presenter) {
 
     fun getGitHubJobsList(page: Int) {
-
-        RetrofitFactory.getRetrofitService(GitHubJobsService::class.java, GitHubJobsService.BASE_URL)
+        RetrofitFactory.getRetrofitService(GitHubJobsAPIService::class.java, GitHubJobsAPIService.BASE_URL)
                 .getJobList(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -39,8 +38,7 @@ class GitHubJobsInteractor(private val mPresenter: Presenter) {
     }
 
     fun getGitHubJob(gitHubJobId: String) {
-
-        RetrofitFactory.getRetrofitService(GitHubJobsService::class.java, GitHubJobsService.BASE_URL)
+        RetrofitFactory.getRetrofitService(GitHubJobsAPIService::class.java,GitHubJobsAPIService.BASE_URL)
                 .getJob(gitHubJobId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -64,12 +62,9 @@ class GitHubJobsInteractor(private val mPresenter: Presenter) {
     }
 
     interface Presenter {
-
         fun onGetJobListSuccess(jobList: List<GitHubJob>)
         fun onGetJobListFailure()
         fun onGetJobSuccess(job: GitHubJob)
         fun onGetJobFailure()
-
     }
-
 }
