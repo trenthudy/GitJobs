@@ -51,19 +51,19 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
     override fun configureJobInfo(job: GitHubJob) {
         supportActionBar?.title = job.title
 
-        Glide.with(job_detail_company_logo_iv.context)
+        Glide.with(jobDetailCompanyLogoImage.context)
                 .load(job.company_logo)
-                .into(job_detail_company_logo_iv)
+                .into(jobDetailCompanyLogoImage)
 
-        job_detail_company_name_tv.text         = job.company
-        job_detail_position_title_tv.text       = job.title
-        job_detail_position_location_tv.text    = job.location
-        job_detail_desc_tv.text                 = Html.fromHtml(job.description)
-        job_detail_how_to_apply_tv.text         = Html.fromHtml(job.how_to_apply)
-        job_detail_position_type_tv.text        = job.type
-        job_detail_company_website_tv.text      = job.company_url
-        job_detail_github_source_tv.text        = job.url
-        job_detail_date_of_listing_tv.text      = job.created_at
+        jobDetailCompanyNameText.text = job.company
+        jobDetailPositionTitleText.text = job.title
+        jobDetailPositionLocationText.text = job.location
+        jobDetailDescriptionText.text = Html.fromHtml(job.description)
+        jobDetailHowToApplyText.text = Html.fromHtml(job.how_to_apply)
+        jobDetailPositionTypeText.text= job.type
+        jobDetailCompanyWebsiteText.text= job.company_url
+        jobDetailGitHubSourceText.text = job.url
+        jobDetailDateOfListingText.text = job.created_at
     }
 
     override fun showFetchJobInfoError() {

@@ -14,10 +14,10 @@
             android:id="@+id/jobListRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/pagination_loading_progress">
+            android:layout_above="@+id/paginationLoadingProgress">
 
             <ListView
-                android:id="@+id/jobsListView"
+                android:id="@+id/jobListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
@@ -25,7 +25,7 @@
 
         <include
             layout="@layout/progress"
-            android:id="@+id/pagination_loading_progress"/>
+            android:id="@+id/paginationLoadingProgress"/>
 
     </RelativeLayout>
 

@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:id="@+id/job_detail_header_layout"
+                android:id="@+id/jobDetailHeaderLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/primary"
@@ -23,14 +23,14 @@
                 android:padding="10dp">
 
                 <LinearLayout
-                    android:id="@+id/job_detail_company_logo_layout"
+                    android:id="@+id/jobDetailCompanyLogoLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true">
 
                     <ImageView
-                        android:id="@+id/job_detail_company_logo_iv"
+                        android:id="@+id/jobDetailCompanyLogoImage"
                         android:layout_width="110dp"
                         android:layout_height="110dp"/>
 
@@ -40,9 +40,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_alignBottom="@+id/job_detail_company_logo_layout"
-                    android:layout_toRightOf="@+id/job_detail_company_logo_layout"
-                    android:layout_toEndOf="@+id/job_detail_company_logo_layout"
+                    android:layout_alignBottom="@+id/jobDetailCompanyLogoLayout"
+                    android:layout_toRightOf="@+id/jobDetailCompanyLogoLayout"
+                    android:layout_toEndOf="@+id/jobDetailCompanyLogoLayout"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginLeft="15dp"
@@ -50,7 +50,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/job_detail_company_name_tv"
+                        android:id="@+id/jobDetailCompanyNameText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
@@ -60,7 +60,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/job_detail_position_title_tv"
+                        android:id="@+id/jobDetailPositionTitleText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
@@ -70,7 +70,7 @@
                         android:textColor="@color/icons"/>
 
                     <TextView
-                        android:id="@+id/job_detail_position_location_tv"
+                        android:id="@+id/jobDetailPositionLocationText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
@@ -84,10 +84,10 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/job_detail_desc_layout"
+                android:id="@+id/jobDetailDescriptionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/job_detail_header_layout"
+                android:layout_below="@+id/jobDetailHeaderLayout"
                 android:padding="10dp"
                 android:orientation="vertical">
 
@@ -100,7 +100,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/job_detail_desc_tv"
+                    android:id="@+id/jobDetailDescriptionText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"/>
@@ -108,10 +108,10 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/job_detail_how_to_apply_layout"
+                android:id="@+id/jobDetailHowToApplyLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/job_detail_desc_layout"
+                android:layout_below="@+id/jobDetailDescriptionLayout"
                 android:padding="10dp"
                 android:orientation="vertical">
 
@@ -124,7 +124,7 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/job_detail_how_to_apply_tv"
+                    android:id="@+id/jobDetailHowToApplyText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="12sp"/>
@@ -134,7 +134,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/job_detail_how_to_apply_layout"
+                android:layout_below="@+id/jobDetailHowToApplyLayout"
                 android:padding="10dp"
                 android:orientation="vertical">
 
@@ -160,7 +160,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/job_detail_position_type_tv"
+                        android:id="@+id/jobDetailPositionTypeText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"/>
@@ -181,7 +181,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/job_detail_company_website_tv"
+                        android:id="@+id/jobDetailCompanyWebsiteText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"/>
@@ -202,7 +202,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/job_detail_github_source_tv"
+                        android:id="@+id/jobDetailGitHubSourceText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"/>
@@ -223,7 +223,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/job_detail_date_of_listing_tv"
+                        android:id="@+id/jobDetailDateOfListingText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14sp"/>

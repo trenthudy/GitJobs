@@ -26,7 +26,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
     @Inject lateinit var presenter: MainPresenter
 
-    private var mJobList: ArrayList<GitHubJob> = ArrayList()
+    private var jobList: ArrayList<GitHubJob> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         appComponent.inject(this)
@@ -48,20 +48,20 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     override fun initializeJobList(jobs: List<GitHubJob>) {
         jobListRefreshLayout.isRefreshing = false
 
-        mJobList = ArrayList()
-        mJobList.addAll(jobs)
+        jobList = ArrayList()
+        jobList.addAll(jobs)
 
-        jobsListView.adapter = GitHubJobAdaptor()
+        jobListView.adapter = GitHubJobAdaptor()
 
-        jobsListView.setOnItemClickListener({ _, _, position, _ ->
+        jobListView.setOnItemClickListener({ _, _, position, _ ->
             val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
             val bundle = Bundle()
-            bundle.putString(Const.GITHUB_JOB_ID, mJobList[position].id)
+            bundle.putString(Const.GITHUB_JOB_ID, this.jobList[position].id)
             jobDetailsActivity.putExtras(bundle)
             startActivity(jobDetailsActivity)
         })
 
-        jobsListView.setOnScrollListener(object : EndlessScrollListener() {
+        jobListView.setOnScrollListener(object : EndlessScrollListener() {
             override fun onLoadMore(page: Int, totalItemsCount: Int): Boolean {
                 presenter.nextPage(page)
                 return true
@@ -70,16 +70,16 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     }
 
     override fun addJobsToList(jobs: List<GitHubJob>) {
-        mJobList.addAll(jobs)
-        (jobsListView.adapter as GitHubJobAdaptor).notifyDataSetChanged()
+        jobList.addAll(jobs)
+        (jobListView.adapter as GitHubJobAdaptor).notifyDataSetChanged()
     }
 
     override fun showPageLoadingDialog() {
-        pagination_loading_progress.visibility = View.VISIBLE
+        paginationLoadingProgress.visibility = View.VISIBLE
     }
 
     override fun hidePageLoadingDialog() {
-        pagination_loading_progress.visibility = View.GONE
+        paginationLoadingProgress.visibility = View.GONE
     }
 
     override fun showGetJobListError() {
@@ -91,7 +91,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     }
 
     internal inner class GitHubJobAdaptor :
-            ArrayAdapter<GitHubJob>(this@MainActivity, R.layout.job_list_item, mJobList) {
+            ArrayAdapter<GitHubJob>(this@MainActivity, R.layout.job_list_item, jobList) {
 
         override fun getView(position: Int, view: View?, parent: ViewGroup): View {
             val retView: View = when (view) {
@@ -99,15 +99,15 @@ class MainActivity : BaseActivity(), MainPresenter.View {
                 else -> view
             }
 
-            val (_, _, title, location, _, _, _, company, _, company_logo) = mJobList[position]
+            val (_, _, title, location, _, _, _, company, _, company_logo) = jobList[position]
 
-            Glide.with(retView.job_list_item_company_logo_iv.context)
+            Glide.with(retView.jobListItemCompanyLogoImage.context)
                     .load(company_logo)
-                    .into(retView.job_list_item_company_logo_iv)
+                    .into(retView.jobListItemCompanyLogoImage)
 
-            retView.job_list_item_company_name_tv.text          = company
-            retView.job_list_item_position_title_tv.text        = title
-            retView.job_list_item_position_location_tv.text     = location
+            retView.jobListItemCompanyNameText.text = company
+            retView.jobListItemPositionTitleText.text = title
+            retView.jobListItemPositionLocationText.text = location
 
             return retView
         }
