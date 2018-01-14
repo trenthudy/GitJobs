@@ -19,7 +19,7 @@ class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() 
 
     fun init() {
 
-        api.getAllJobs(1)
+        api.getAllJobs(0)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {
@@ -33,7 +33,7 @@ class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() 
 
     fun refresh() {
 
-        api.getAllJobs(1)
+        api.getAllJobs(0)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {

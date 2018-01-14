@@ -6,34 +6,27 @@ import android.widget.AbsListView
  * Created by trent on 1/11/18.
  */
 
-abstract class EndlessScrollListener : AbsListView.OnScrollListener {
+abstract class EndlessScrollListener constructor(
+        private val unitsPerPage: Int,
+        private val visibilityThreshold: Int) : AbsListView.OnScrollListener {
 
-    private val visibleThreshold = 5
-    private var currentPage = 0
-    private var previousTotalItemCount = 0
-    private var loading = true
-    private val startingPageIndex = 0
-    private val divisibilityTest = 50
+    private var page: Int = 0
+    private var itemCount = unitsPerPage
+    private var loading = false
 
-    override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
-        if (totalItemCount < previousTotalItemCount) {
-            this.currentPage = this.startingPageIndex
-            this.previousTotalItemCount = totalItemCount
-            if (totalItemCount == 0) {
-                this.loading = true
-            }
-        }
+    override fun onScroll(view: AbsListView, firstVisibleItem: Int,
+                          visibleItemCount: Int, totalItemCount: Int) {
 
-        if (loading && totalItemCount > previousTotalItemCount) {
+        if (loading && totalItemCount > itemCount) {
             loading = false
-            previousTotalItemCount = totalItemCount
-            currentPage++
+            itemCount = totalItemCount
         }
 
-        if (!loading && firstVisibleItem + visibleItemCount + visibleThreshold >= totalItemCount) {
-            if (totalItemCount % divisibilityTest == 0) {
-                loading = onLoadMore(currentPage + 1, totalItemCount)
-            }
+        if (!loading
+                && totalItemCount % unitsPerPage == 0
+                && firstVisibleItem + visibleItemCount + visibilityThreshold >= totalItemCount) {
+
+            loading = onLoadMore(++page, totalItemCount)
         }
     }
 

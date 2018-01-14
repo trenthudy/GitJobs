@@ -76,7 +76,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
             startActivity(jobDetailsActivity)
         })
 
-        jobListView.setOnScrollListener(object : EndlessScrollListener() {
+        jobListView.setOnScrollListener(object : EndlessScrollListener(50, 5) {
             override fun onLoadMore(page: Int, totalItemsCount: Int): Boolean {
                 presenter.nextPage(page)
                 return true
