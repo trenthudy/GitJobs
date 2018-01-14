@@ -3,6 +3,7 @@ package io.hudepohl.gitjobs.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -43,6 +44,11 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     override fun onDestroy() {
         presenter.detach()
         super.onDestroy()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
     }
 
     override fun initializeJobList(jobs: List<GitHubJob>) {
