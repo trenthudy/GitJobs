@@ -29,6 +29,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.jobsNearMe.JobsNearMeActivity">
+            <intent-filter>
+                <action android:name="io.hudepohl.gitjobs.JobsNearMeActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
