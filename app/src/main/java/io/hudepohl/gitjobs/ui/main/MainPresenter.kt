@@ -2,6 +2,7 @@ package io.hudepohl.gitjobs.ui.main
 
 import io.hudepohl.gitjobs.data.githubJobs.GitHubJobsAPI
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
+import io.hudepohl.gitjobs.ui.BasePresenter
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -12,18 +13,9 @@ import javax.inject.Inject
  * Created by trent on 1/11/18.
  */
 
-class MainPresenter @Inject constructor() {
+class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() {
 
-    private var view: MainPresenter.View? = null
     @Inject lateinit var api: GitHubJobsAPI
-
-    fun attachView(viewToAttach: MainPresenter.View) {
-        view = viewToAttach
-    }
-
-    fun detachView() {
-        view = null
-    }
 
     fun init() {
 
@@ -46,7 +38,7 @@ class MainPresenter @Inject constructor() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {
 
-                    override fun onSubscribe(d: Disposable)     {  } // <-- no dialog on refresh
+                    override fun onSubscribe(d: Disposable)     {  }
                     override fun onNext(jobs: List<GitHubJob>)  { view?.initializeJobList(jobs) }
                     override fun onError(e: Throwable)          { view?.showGetJobListError()   }
                     override fun onComplete()                   {  }

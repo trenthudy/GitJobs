@@ -29,7 +29,7 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        presenter.attachView(this)
+        presenter.bind(this)
 
         val jobId = intent?.extras?.getString(Const.GITHUB_JOB_ID)
         when (jobId) {
@@ -39,7 +39,7 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
     }
 
     override fun onDestroy() {
-        presenter.detachView()
+        presenter.detach()
         super.onDestroy()
     }
 

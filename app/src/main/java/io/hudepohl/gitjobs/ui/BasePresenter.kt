@@ -3,15 +3,16 @@ package io.hudepohl.gitjobs.ui
 /**
  * Created by trent on 1/13/18.
  */
-open class BasePresenter {
 
-    protected var view: Any? = null
+abstract class BasePresenter<T> {
 
-    fun bindView(newView: Any) {
-        view = newView
+    protected var view: T? = null
+
+    fun bind(bindingView: T) {
+        view = bindingView
     }
 
-    fun detachView() {
+    fun detach() {
         view = null
     }
 }

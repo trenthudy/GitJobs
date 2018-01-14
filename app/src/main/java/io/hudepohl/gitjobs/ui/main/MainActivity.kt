@@ -33,7 +33,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        presenter.attachView(this)
+        presenter.bind(this)
         presenter.init()
 
         supportActionBar?.title = getString(R.string.toolbar_welcome_msg)
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     }
 
     override fun onDestroy() {
-        presenter.detachView()
+        presenter.detach()
         super.onDestroy()
     }
 
@@ -54,10 +54,9 @@ class MainActivity : BaseActivity(), MainPresenter.View {
         jobsListView.adapter = GitHubJobAdaptor()
 
         jobsListView.setOnItemClickListener({ _, _, position, _ ->
+            val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
             val bundle = Bundle()
             bundle.putString(Const.GITHUB_JOB_ID, mJobList[position].id)
-
-            val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
             jobDetailsActivity.putExtras(bundle)
             startActivity(jobDetailsActivity)
         })
