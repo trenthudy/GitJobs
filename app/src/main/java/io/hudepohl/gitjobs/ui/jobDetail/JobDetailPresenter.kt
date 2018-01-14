@@ -1,38 +1,45 @@
 package io.hudepohl.gitjobs.ui.jobDetail
 
-import io.hudepohl.githubJobs.data.GitHubJobsInteractor
-import io.hudepohl.githubJobs.data.model.GitHubJob
+import io.hudepohl.gitjobs.data.githubJobs.GitHubJobsAPI
+import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 /**
  * Created by trent on 1/12/18.
  */
 
-class JobDetailPresenter internal constructor(
-        private val mView: JobDetailPresenter.View) : GitHubJobsInteractor.Presenter {
+class JobDetailPresenter @Inject constructor() {
 
-    private val mGitHubJobsModel: GitHubJobsInteractor = GitHubJobsInteractor(this)
+    private var view: JobDetailPresenter.View? = null
+    @Inject lateinit var api: GitHubJobsAPI
+
+    fun attachView(viewToAttach: JobDetailPresenter.View) {
+        view = viewToAttach
+    }
+
+    fun detachView() {
+        view = null
+    }
 
     fun getJobInfo(jobId: String) {
-        mGitHubJobsModel.getGitHubJob(jobId)
+
+        api.getJob(jobId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<GitHubJob> {
+
+                    override fun onSubscribe(d: Disposable) { }
+                    override fun onNext(job: GitHubJob)     { view?.configureJobInfo(job)   }
+                    override fun onError(e: Throwable)      { view?.showFetchJobInfoError() }
+                    override fun onComplete()               { }
+                })
     }
 
-    override fun onGetJobListSuccess(jobList: List<GitHubJob>) {
-
-    }
-
-    override fun onGetJobListFailure() {
-
-    }
-
-    override fun onGetJobSuccess(job: GitHubJob) {
-        mView.configureJobInfo(job)
-    }
-
-    override fun onGetJobFailure() {
-        mView.showFetchJobInfoError()
-    }
-
-    internal interface View {
+    interface View {
         fun configureJobInfo(job: GitHubJob)
         fun showFetchJobInfoError()
     }

@@ -1,58 +1,73 @@
 package io.hudepohl.gitjobs.ui.main
 
-import io.hudepohl.githubJobs.data.GitHubJobsInteractor
-import io.hudepohl.githubJobs.data.model.GitHubJob
+import io.hudepohl.gitjobs.data.githubJobs.GitHubJobsAPI
+import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 /**
  * Created by trent on 1/11/18.
  */
 
-class MainPresenter internal constructor(
-        private val mView: MainPresenter.View) : GitHubJobsInteractor.Presenter {
+class MainPresenter @Inject constructor() {
 
-    private val mGitHubJobsModel: GitHubJobsInteractor = GitHubJobsInteractor(this)
+    private var view: MainPresenter.View? = null
+    @Inject lateinit var api: GitHubJobsAPI
 
-    private var page = 1
+    fun attachView(viewToAttach: MainPresenter.View) {
+        view = viewToAttach
+    }
+
+    fun detachView() {
+        view = null
+    }
 
     fun init() {
-        page = 1
-        mView.showPageLoadingDialog()
-        mGitHubJobsModel.getGitHubJobsList(page)
+
+        api.getJobList(1)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<List<GitHubJob>> {
+
+                    override fun onSubscribe(d: Disposable)     { view?.showPageLoadingDialog() }
+                    override fun onNext(jobs: List<GitHubJob>)  { view?.initializeJobList(jobs) }
+                    override fun onError(e: Throwable)          { view?.showGetJobListError()   }
+                    override fun onComplete()                   { view?.hidePageLoadingDialog() }
+                })
     }
 
     fun refresh() {
-        page = 1
-        mGitHubJobsModel.getGitHubJobsList(page)
+
+        api.getJobList(1)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<List<GitHubJob>> {
+
+                    override fun onSubscribe(d: Disposable)     {  } // <-- no dialog on refresh
+                    override fun onNext(jobs: List<GitHubJob>)  { view?.initializeJobList(jobs) }
+                    override fun onError(e: Throwable)          { view?.showGetJobListError()   }
+                    override fun onComplete()                   {  }
+                })
     }
 
-    fun getNextPage() {
-        mView.showPageLoadingDialog()
-        mGitHubJobsModel.getGitHubJobsList(++page)
+    fun nextPage(page: Int) {
+
+        api.getJobList(page)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<List<GitHubJob>> {
+
+                    override fun onSubscribe(d: Disposable)     { view?.showPageLoadingDialog() }
+                    override fun onNext(jobs: List<GitHubJob>)  { view?.addJobsToList(jobs)     }
+                    override fun onError(e: Throwable)          { view?.showGetJobListError()   }
+                    override fun onComplete()                   { view?.hidePageLoadingDialog() }
+                })
     }
 
-    override fun onGetJobListSuccess(jobList: List<GitHubJob>) {
-        if (page == 1) {
-            mView.initializeJobList(jobList)
-        } else {
-            mView.addJobsToList(jobList)
-        }
-
-        mView.hidePageLoadingDialog()
-    }
-
-    override fun onGetJobListFailure() {
-        mView.showGetJobListError()
-    }
-
-    override fun onGetJobSuccess(job: GitHubJob) {
-
-    }
-
-    override fun onGetJobFailure() {
-
-    }
-
-    internal interface View {
+    interface View {
         fun initializeJobList(jobs: List<GitHubJob>)
         fun addJobsToList(jobs: List<GitHubJob>)
         fun showPageLoadingDialog()

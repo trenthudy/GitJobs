@@ -12,40 +12,59 @@ import com.bumptech.glide.Glide
 
 import java.util.ArrayList
 
-import io.hudepohl.githubJobs.data.model.GitHubJob
 import io.hudepohl.gitjobs.R
+import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
 import io.hudepohl.gitjobs.util.ConstKey
 import io.hudepohl.gitjobs.util.EndlessScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.job_list_item.view.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainPresenter.View {
 
-    private var mPresenter: MainPresenter = MainPresenter(this)
+    @Inject lateinit var presenter: MainPresenter
 
     private var mJobList: ArrayList<GitHubJob> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        presenter.attachView(this)
+        presenter.init()
+
         supportActionBar?.title = getString(R.string.toolbar_welcome_msg)
-        job_list_refresh_layout.setOnRefreshListener({ mPresenter.refresh() })
-        mPresenter.init()
+        jobListRefreshLayout.setOnRefreshListener({ presenter.refresh() })
+    }
+
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
     }
 
     override fun initializeJobList(jobs: List<GitHubJob>) {
-        if (job_list_refresh_layout.isRefreshing) { job_list_refresh_layout.isRefreshing = false }
+        jobListRefreshLayout.isRefreshing = false
 
         mJobList = ArrayList()
         mJobList.addAll(jobs)
 
-        job_list_lv.adapter = GitHubJobAdaptor()
-        job_list_lv.setOnItemClickListener({ _, _, i, _ -> moveToJobDetails(mJobList[i]) })
-        job_list_lv.setOnScrollListener(object : EndlessScrollListener() {
+        jobsListView.adapter = GitHubJobAdaptor()
+
+        jobsListView.setOnItemClickListener({ _, _, position, _ ->
+            val bundle = Bundle()
+            bundle.putString(ConstKey.JOB_ID, mJobList[position].id)
+
+            val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
+            jobDetailsActivity.putExtras(bundle)
+            startActivity(jobDetailsActivity)
+        })
+
+        jobsListView.setOnScrollListener(object : EndlessScrollListener() {
             override fun onLoadMore(page: Int, totalItemsCount: Int): Boolean {
-                mPresenter.getNextPage()
+                presenter.nextPage(page)
                 return true
             }
         })
@@ -53,7 +72,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
     override fun addJobsToList(jobs: List<GitHubJob>) {
         mJobList.addAll(jobs)
-        (job_list_lv.adapter as GitHubJobAdaptor).notifyDataSetChanged()
+        (jobsListView.adapter as GitHubJobAdaptor).notifyDataSetChanged()
     }
 
     override fun showPageLoadingDialog() {
@@ -70,15 +89,6 @@ class MainActivity : BaseActivity(), MainPresenter.View {
                 getString(R.string.err_failed_to_load_jobs),
                 Toast.LENGTH_LONG
         ).show()
-    }
-
-    private fun moveToJobDetails(job: GitHubJob) {
-        val bundle = Bundle()
-        bundle.putString(ConstKey.JOB_ID, job.id)
-
-        val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
-        jobDetailsActivity.putExtras(bundle)
-        startActivity(jobDetailsActivity)
     }
 
     internal inner class GitHubJobAdaptor :

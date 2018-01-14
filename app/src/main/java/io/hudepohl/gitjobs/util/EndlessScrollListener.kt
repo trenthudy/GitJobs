@@ -9,10 +9,10 @@ import android.widget.AbsListView
 abstract class EndlessScrollListener : AbsListView.OnScrollListener {
 
     private val visibleThreshold = 5
-    private var currentPage = 1
+    private var currentPage = 0
     private var previousTotalItemCount = 0
     private var loading = true
-    private val startingPageIndex = 1
+    private val startingPageIndex = 0
     private val divisibilityTest = 50
 
     override fun onScroll(view: AbsListView, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {

@@ -11,13 +11,13 @@
         android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/job_list_refresh_layout"
+            android:id="@+id/jobListRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/pagination_loading_progress">
 
             <ListView
-                android:id="@+id/job_list_lv"
+                android:id="@+id/jobsListView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 

@@ -1,6 +1,6 @@
-package io.hudepohl.githubJobs.data
+package io.hudepohl.gitjobs.data.githubJobs
 
-import io.hudepohl.githubJobs.data.model.GitHubJob
+import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -10,7 +10,7 @@ import retrofit2.http.Query
  * Created by trent on 1/11/18.
  */
 
-interface GitHubJobsAPIService {
+interface GitHubJobsAPI {
 
     companion object {
         const val BASE_URL = "https://jobs.github.com"

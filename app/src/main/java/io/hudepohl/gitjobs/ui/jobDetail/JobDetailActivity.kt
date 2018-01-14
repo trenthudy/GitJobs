@@ -6,11 +6,12 @@ import android.widget.Toast
 
 import com.bumptech.glide.Glide
 
-import io.hudepohl.githubJobs.data.model.GitHubJob
 import io.hudepohl.gitjobs.R
+import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.util.ConstKey
 import kotlinx.android.synthetic.main.activity_job_detail.*
+import javax.inject.Inject
 
 /**
  * Created by trent on 1/12/18.
@@ -18,9 +19,11 @@ import kotlinx.android.synthetic.main.activity_job_detail.*
 
 class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
 
-    private var mPresenter: JobDetailPresenter = JobDetailPresenter(this)
+    @Inject lateinit var presenter: JobDetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_detail)
 
@@ -32,8 +35,14 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
         if (id == ConstKey.NO_ID_FOUND) {
             showFetchJobInfoError()
         } else {
-            mPresenter.getJobInfo(id)
+            presenter.attachView(this)
+            presenter.getJobInfo(id)
         }
+    }
+
+    override fun onDestroy() {
+        presenter.detachView()
+        super.onDestroy()
     }
 
     override fun onSupportNavigateUp(): Boolean {
