@@ -2,10 +2,7 @@ package io.hudepohl.gitjobs.ui.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.Toast
 
@@ -17,6 +14,7 @@ import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
+import io.hudepohl.gitjobs.ui.jobsNearMe.JobsNearMeActivity
 import io.hudepohl.gitjobs.util.Const
 import io.hudepohl.gitjobs.util.EndlessScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
@@ -49,6 +47,17 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.mainMenuJobsNearMe -> {
+                val jobsNearMeIntent = Intent(this, JobsNearMeActivity::class.java)
+                startActivity(jobsNearMeIntent)
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun initializeJobList(jobs: List<GitHubJob>) {
