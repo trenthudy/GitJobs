@@ -19,7 +19,7 @@ class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() 
 
     fun init() {
 
-        api.getJobList(1)
+        api.getAllJobs(1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {
@@ -33,7 +33,7 @@ class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() 
 
     fun refresh() {
 
-        api.getJobList(1)
+        api.getAllJobs(1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {
@@ -47,7 +47,7 @@ class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() 
 
     fun nextPage(page: Int) {
 
-        api.getJobList(page)
+        api.getAllJobs(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<List<GitHubJob>> {

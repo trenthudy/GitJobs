@@ -19,7 +19,7 @@ class JobDetailPresenter @Inject constructor() : BasePresenter<JobDetailPresente
 
     fun jobInfo(jobId: String) {
 
-        api.getJob(jobId)
+        api.getJobById(jobId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<GitHubJob> {

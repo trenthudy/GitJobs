@@ -17,12 +17,18 @@ interface GitHubJobsAPI {
     }
 
     @GET("/positions.json")
-    fun getJobList(
+    fun getAllJobs(
             @Query("page") page: Int
     ): Observable<List<GitHubJob>>
 
     @GET("/positions/{job_id}.json")
-    fun getJob(
+    fun getJobById(
             @Path("job_id") jobId: String
     ): Observable<GitHubJob>
+
+    @GET("/positions.json")
+    fun getJobsByLatLong(
+            @Query("lat") lat: Double,
+            @Query("long") long: Double
+    ): Observable<List<GitHubJob>>
 }
