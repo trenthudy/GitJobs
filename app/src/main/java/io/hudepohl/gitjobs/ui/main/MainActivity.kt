@@ -16,7 +16,7 @@ import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
-import io.hudepohl.gitjobs.util.ConstKey
+import io.hudepohl.gitjobs.util.Const
 import io.hudepohl.gitjobs.util.EndlessScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.job_list_item.view.*
@@ -55,7 +55,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
         jobsListView.setOnItemClickListener({ _, _, position, _ ->
             val bundle = Bundle()
-            bundle.putString(ConstKey.JOB_ID, mJobList[position].id)
+            bundle.putString(Const.GITHUB_JOB_ID, mJobList[position].id)
 
             val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
             jobDetailsActivity.putExtras(bundle)

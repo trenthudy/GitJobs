@@ -25,7 +25,7 @@ class JobDetailPresenter @Inject constructor() {
         view = null
     }
 
-    fun getJobInfo(jobId: String) {
+    fun jobInfo(jobId: String) {
 
         api.getJob(jobId)
                 .subscribeOn(Schedulers.newThread())

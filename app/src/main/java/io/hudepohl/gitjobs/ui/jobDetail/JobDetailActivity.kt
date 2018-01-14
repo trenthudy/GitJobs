@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
-import io.hudepohl.gitjobs.util.ConstKey
+import io.hudepohl.gitjobs.util.Const
 import kotlinx.android.synthetic.main.activity_job_detail.*
 import javax.inject.Inject
 
@@ -27,16 +27,14 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_detail)
 
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        }
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val id = intent?.extras?.getString(ConstKey.JOB_ID) ?: ConstKey.NO_ID_FOUND
-        if (id == ConstKey.NO_ID_FOUND) {
-            showFetchJobInfoError()
-        } else {
-            presenter.attachView(this)
-            presenter.getJobInfo(id)
+        presenter.attachView(this)
+
+        val jobId = intent?.extras?.getString(Const.GITHUB_JOB_ID)
+        when (jobId) {
+            null -> { showFetchJobInfoError()  }
+            else -> { presenter.jobInfo(jobId) }
         }
     }
 
