@@ -22,7 +22,6 @@
     <!-- Error Messages -->
     <string name="err_failed_to_load_jobs">Failed to load jobs. Try again later.</string>
     <string name="err_failed_to_load_job_details">Failed to load job details.</string>
-    <string name="err_failed_to_determine_your_location">Failed to determine your location.</string>
     <string name="err_no_location_permission">
         Oh no! We were not able to determine your location.
         Please review your device\'s Settings and try again.
