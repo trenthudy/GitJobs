@@ -40,11 +40,12 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
     }
 
     override fun displayLocation(lat: Double, long: Double) {
-        jobsNearMeLocationText.text = getString(R.string.lbl_your_location) + ":   $lat, $long"
+        val msg = getString(R.string.lbl_my_location) + ":   $lat, $long"
+        jobsNearMeLocationText.text = msg
     }
 
     override fun initJobsList(jobs: List<GitHubJob>) {
-
+        println("FOUND ${jobs.size} JOBS")
     }
 
     override fun showNoJobsNearMeMsg() {
@@ -55,7 +56,27 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
         ).show()
     }
 
-    override fun showLocationError() {
+    override fun showWaitingForLocation() {
+
+    }
+
+    override fun showLoadingProgress() {
+        println("SHOW")
+    }
+
+    override fun hideLoadingProgress() {
+        println("HIDE")
+    }
+
+    override fun showPermissionError() {
+        Toast.makeText(
+                applicationContext,
+                getString(R.string.err_no_location_permission),
+                Toast.LENGTH_LONG
+        ).show()
+    }
+
+    override fun showProviderError() {
         Toast.makeText(
                 applicationContext,
                 getString(R.string.err_failed_to_determine_your_location),
@@ -63,11 +84,7 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
         ).show()
     }
 
-    override fun showNoLocationPermissionError() {
-        Toast.makeText(
-                applicationContext,
-                getString(R.string.err_no_location_permission),
-                Toast.LENGTH_LONG
-        ).show()
+    override fun showAPIError() {
+        println("ERROR")
     }
 }
