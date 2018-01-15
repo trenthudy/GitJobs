@@ -1,12 +1,17 @@
 package io.hudepohl.gitjobs.ui.jobsNearMe
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
+import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
+import io.hudepohl.gitjobs.util.Const
+import io.hudepohl.gitjobs.util.GitHubJobListAdaptor
 import kotlinx.android.synthetic.main.activity_jobs_near_me.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.progress.*
 import javax.inject.Inject
 
@@ -42,14 +47,23 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
     }
 
     override fun displayLocation(lat: Double, long: Double) {
-        jobsNearMeResultsLayout.visibility = View.VISIBLE
-
         val msg = getString(R.string.lbl_my_location) + ":   $lat, $long"
         jobsNearMeLocationText.text = msg
     }
 
     override fun initJobsList(jobs: List<GitHubJob>) {
-        println("FOUND ${jobs.size} JOBS")
+        jobsNearMeListView.adapter = GitHubJobListAdaptor(this, jobs as ArrayList<GitHubJob>)
+
+        jobsNearMeListView.setOnItemClickListener({ _, _, position, _ ->
+
+            val job = (jobsNearMeListView.adapter as GitHubJobListAdaptor).getItem(position)
+
+            val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString(Const.GITHUB_JOB_ID, job.id)
+            jobDetailsActivity.putExtras(bundle)
+            startActivity(jobDetailsActivity)
+        })
     }
 
     override fun showNoJobsNearMeMsg() {
@@ -57,13 +71,14 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
     }
 
     override fun showWaitingForLocation() {
+        jobsNearMeResultsLayout.visibility = View.VISIBLE
         jobsNearMeProgress.visibility = View.VISIBLE
         progressText.text = getString(R.string.lbl_finding_your_location)
     }
 
     override fun showLoadingProgress() {
-        jobsNearMeProgress.visibility = View.VISIBLE
         progressText.text = getString(R.string.lbl_loading_more_jobs)
+        jobsNearMeProgress.visibility = View.VISIBLE
     }
 
     override fun hideLoadingProgress() {

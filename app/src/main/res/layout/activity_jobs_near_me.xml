@@ -36,6 +36,8 @@
             android:background="@color/primary"
             android:elevation="4dp"
             android:padding="15dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/icons"
             android:textSize="14sp"/>
 
