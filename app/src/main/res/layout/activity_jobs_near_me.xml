@@ -13,12 +13,11 @@
             android:id="@+id/jobsNearMeLocationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
             android:background="@color/primary"
             android:elevation="4dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:padding="15dp"
             android:textColor="@color/icons"
+            android:text="Location:"
             android:textSize="14sp"/>
 
         <ListView
