@@ -24,11 +24,11 @@ class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jobs_near_me)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = getString(R.string.lbl_jobs_near_me)
-
         presenter.bind(this)
         presenter.getJobsNearMe()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = getString(R.string.lbl_jobs_near_me)
     }
 
     override fun onDestroy() {

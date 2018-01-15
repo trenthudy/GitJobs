@@ -23,8 +23,6 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_detail)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         presenter.bind(this)
 
         val jobId = intent?.extras?.getString(Const.GITHUB_JOB_ID)
@@ -32,6 +30,8 @@ class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
             null -> { showFetchJobInfoError()  }
             else -> { presenter.jobInfo(jobId) }
         }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onDestroy() {

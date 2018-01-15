@@ -24,6 +24,7 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

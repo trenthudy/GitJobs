@@ -12,6 +12,10 @@ class BaseApplication : Application() {
     }
 
     private fun initDagger() {
-        component = DaggerApplicationComponent.builder().androidModule(AndroidModule(this)).build()
+
+        component = DaggerApplicationComponent
+                        .builder()
+                        .androidModule(AndroidModule(this))
+                        .build()
     }
 }

@@ -32,7 +32,6 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
     private fun getLocationSnapshot() {
 
         try {
-
             locationListener = object : LocationListener {
 
                 var foundValidLocation = false
@@ -64,7 +63,6 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
             } else {
                 view?.showLocationError()
             }
-
         } catch (e: SecurityException) {
             view?.showLocationError()
         }
@@ -103,11 +101,9 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
         fun displayLocation(lat: Double, long: Double)
         fun initJobsList(jobs: List<GitHubJob>)
         fun showNoJobsNearMeMsg()
-
         fun showWaitingForLocation()
         fun showLoadingProgress()
         fun hideLoadingProgress()
-
         fun showLocationError()
         fun showAPIError()
     }

@@ -14,6 +14,7 @@ class DataModule {
     @Singleton
     @Provides
     fun provideGitHubJobsAPI(): GitHubJobsAPI {
+
         return Retrofit.Builder()
                 .baseUrl(GitHubJobsAPI.BASE_URL)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
