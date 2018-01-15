@@ -13,10 +13,6 @@ import io.hudepohl.gitjobs.util.Const
 import kotlinx.android.synthetic.main.activity_job_detail.*
 import javax.inject.Inject
 
-/**
- * Created by trent on 1/12/18.
- */
-
 class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
 
     @Inject lateinit var presenter: JobDetailPresenter

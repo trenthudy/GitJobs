@@ -6,10 +6,6 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-/**
- * Created by trent on 1/11/18.
- */
-
 interface GitHubJobsAPI {
 
     companion object {

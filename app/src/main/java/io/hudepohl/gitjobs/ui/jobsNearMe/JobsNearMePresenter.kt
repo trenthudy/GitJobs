@@ -13,10 +13,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-/**
- * Created by trent on 1/14/18.
- */
-
 class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresenter.View>() {
 
     @Inject lateinit var api: GitHubJobsAPI

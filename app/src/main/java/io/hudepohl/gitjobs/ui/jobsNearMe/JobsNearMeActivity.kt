@@ -11,13 +11,8 @@ import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
 import io.hudepohl.gitjobs.util.Const
 import io.hudepohl.gitjobs.util.GitHubJobListAdaptor
 import kotlinx.android.synthetic.main.activity_jobs_near_me.*
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.progress.*
 import javax.inject.Inject
-
-/**
- * Created by trent on 1/14/18.
- */
 
 class JobsNearMeActivity : BaseActivity(), JobsNearMePresenter.View {
 

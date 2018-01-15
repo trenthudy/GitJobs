@@ -7,10 +7,6 @@ import io.hudepohl.gitjobs.ui.jobsNearMe.JobsNearMeActivity
 import io.hudepohl.gitjobs.ui.main.MainActivity
 import javax.inject.Singleton
 
-/**
- * Created by trent on 1/13/18.
- */
-
 @Singleton
 @Component(modules = [
     AndroidModule::class,

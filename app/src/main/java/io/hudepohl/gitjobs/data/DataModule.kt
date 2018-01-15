@@ -8,10 +8,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-/**
- * Created by trent on 1/13/18.
- */
-
 @Module
 class DataModule {
 

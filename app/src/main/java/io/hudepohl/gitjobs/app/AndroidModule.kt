@@ -7,10 +7,6 @@ import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
 
-/**
- * Created by trent on 1/13/18.
- */
-
 @Module
 class AndroidModule(private val app: Application) {
 

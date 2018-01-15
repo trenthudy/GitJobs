@@ -11,10 +11,6 @@ import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import kotlinx.android.synthetic.main.job_list_item.view.*
 
-/**
- * Created by trent on 1/14/18.
- */
-
 class GitHubJobListAdaptor(private var context: Context,
                            initialJobs: ArrayList<GitHubJob>) : BaseAdapter() {
 

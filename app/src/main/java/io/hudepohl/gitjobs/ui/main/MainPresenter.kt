@@ -9,10 +9,6 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-/**
- * Created by trent on 1/11/18.
- */
-
 class MainPresenter @Inject constructor() : BasePresenter<MainPresenter.View>() {
 
     @Inject lateinit var api: GitHubJobsAPI

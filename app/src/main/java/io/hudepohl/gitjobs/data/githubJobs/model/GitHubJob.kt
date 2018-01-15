@@ -1,9 +1,5 @@
 package io.hudepohl.gitjobs.data.githubJobs.model
 
-/**
- * Created by trent on 1/11/18.
- */
-
 data class GitHubJob(
 
     var id: String,
