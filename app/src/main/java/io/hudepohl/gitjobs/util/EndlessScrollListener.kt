@@ -6,7 +6,7 @@ import android.widget.AbsListView
  * Created by trent on 1/11/18.
  */
 
-abstract class EndlessScrollListener constructor(
+abstract class EndlessScrollListener(
         private val unitsPerPage: Int,
         private val visibilityThreshold: Int) : AbsListView.OnScrollListener {
 

@@ -6,8 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:gravity="center"
-    android:padding="3dp"
-    android:visibility="visible">
+    android:padding="3dp">
 
     <ProgressBar
         android:id="@+id/progressWheel"
@@ -24,7 +23,7 @@
         android:layout_marginStart="5dp"
         android:layout_centerVertical="true"
         android:padding="5dp"
-        android:text="@string/lbl_loading_more_items"
+        android:text="@string/lbl_loading"
         android:textSize="15sp"/>
 
 </RelativeLayout>

@@ -38,7 +38,9 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
         try {
 
             locationListener = object : LocationListener {
+
                 var foundValidLocation = false
+
                 override fun onLocationChanged(location: Location?) {
                     if (location != null && !foundValidLocation) {
                         foundValidLocation = true
@@ -64,11 +66,11 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
             if (hasProvider) {
                 view?.showWaitingForLocation()
             } else {
-                view?.showProviderError()
+                view?.showLocationError()
             }
 
         } catch (e: SecurityException) {
-            view?.showPermissionError()
+            view?.showLocationError()
         }
     }
 
@@ -110,8 +112,7 @@ class JobsNearMePresenter @Inject constructor() : BasePresenter<JobsNearMePresen
         fun showLoadingProgress()
         fun hideLoadingProgress()
 
-        fun showPermissionError()
-        fun showProviderError()
+        fun showLocationError()
         fun showAPIError()
     }
 }

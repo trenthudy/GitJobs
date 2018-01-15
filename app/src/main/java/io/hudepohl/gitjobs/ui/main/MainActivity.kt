@@ -3,12 +3,7 @@ package io.hudepohl.gitjobs.ui.main
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.ArrayAdapter
 import android.widget.Toast
-
-import com.bumptech.glide.Glide
-
-import java.util.ArrayList
 
 import io.hudepohl.gitjobs.R
 import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
@@ -17,15 +12,15 @@ import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
 import io.hudepohl.gitjobs.ui.jobsNearMe.JobsNearMeActivity
 import io.hudepohl.gitjobs.util.Const
 import io.hudepohl.gitjobs.util.EndlessScrollListener
+import io.hudepohl.gitjobs.util.GitHubJobListAdaptor
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.job_list_item.view.*
+import kotlinx.android.synthetic.main.progress.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity(), MainPresenter.View {
 
     @Inject lateinit var presenter: MainPresenter
-
-    private var jobList: ArrayList<GitHubJob> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         appComponent.inject(this)
@@ -63,15 +58,15 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     override fun initializeJobList(jobs: List<GitHubJob>) {
         jobListRefreshLayout.isRefreshing = false
 
-        jobList = ArrayList()
-        jobList.addAll(jobs)
-
-        jobListView.adapter = GitHubJobAdaptor()
+        jobListView.adapter = GitHubJobListAdaptor(this, jobs as ArrayList<GitHubJob>)
 
         jobListView.setOnItemClickListener({ _, _, position, _ ->
+
+            val job = (jobListView.adapter as GitHubJobListAdaptor).getItem(position)
+
             val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
             val bundle = Bundle()
-            bundle.putString(Const.GITHUB_JOB_ID, this.jobList[position].id)
+            bundle.putString(Const.GITHUB_JOB_ID, job.id)
             jobDetailsActivity.putExtras(bundle)
             startActivity(jobDetailsActivity)
         })
@@ -85,11 +80,11 @@ class MainActivity : BaseActivity(), MainPresenter.View {
     }
 
     override fun addJobsToList(jobs: List<GitHubJob>) {
-        jobList.addAll(jobs)
-        (jobListView.adapter as GitHubJobAdaptor).notifyDataSetChanged()
+        (jobListView.adapter as GitHubJobListAdaptor).addJobs(jobs)
     }
 
     override fun showPageLoadingDialog() {
+        progressText.text = getString(R.string.lbl_loading_more_jobs)
         paginationLoadingProgress.visibility = View.VISIBLE
     }
 
@@ -103,28 +98,5 @@ class MainActivity : BaseActivity(), MainPresenter.View {
                 getString(R.string.err_failed_to_load_jobs),
                 Toast.LENGTH_LONG
         ).show()
-    }
-
-    internal inner class GitHubJobAdaptor :
-            ArrayAdapter<GitHubJob>(this@MainActivity, R.layout.job_list_item, jobList) {
-
-        override fun getView(position: Int, view: View?, parent: ViewGroup): View {
-            val retView: View = when (view) {
-                null -> LayoutInflater.from(context).inflate(R.layout.job_list_item, parent, false)
-                else -> view
-            }
-
-            val (_, _, title, location, _, _, _, company, _, company_logo) = jobList[position]
-
-            Glide.with(retView.jobListItemCompanyLogoImage.context)
-                    .load(company_logo)
-                    .into(retView.jobListItemCompanyLogoImage)
-
-            retView.jobListItemCompanyNameText.text = company
-            retView.jobListItemPositionTitleText.text = title
-            retView.jobListItemPositionLocationText.text = location
-
-            return retView
-        }
     }
 }
