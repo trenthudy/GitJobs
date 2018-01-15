@@ -5,9 +5,10 @@
     <string name="toolbar_welcome_msg">Welcome to GitJobs</string>
 
     <!-- Labels -->
-    <string name="lbl_loading_more_items">Loading more jobs&#8230;</string>
+    <string name="lbl_loading_more_jobs">Loading more jobs&#8230;</string>
     <string name="lbl_jobs_near_me">Jobs Near Me</string>
     <string name="lbl_my_location">My location</string>
+    <string name="lbl_finding_your_location">Finding your location&#8230;</string>
     <string name="lbl_no_jobs_nearby">Sorry! We could not find any jobs nearby.</string>
     <string name="lbl_description">Description</string>
     <string name="lbl_how_to_apply">How To Apply</string>
@@ -22,8 +23,8 @@
     <string name="err_failed_to_load_job_details">Failed to load job details.</string>
     <string name="err_failed_to_determine_your_location">Failed to determine your location.</string>
     <string name="err_no_location_permission">
-        Please allow GitJobs to access your location to see jobs listings near you.
-        You can enable location permissions from Settings.
+        Oh no! We were not able to determine your location.
+        Please review your device\'s Settings and try again.
     </string>
 
 </resources>
