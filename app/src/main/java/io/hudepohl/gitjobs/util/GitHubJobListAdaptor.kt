@@ -41,9 +41,7 @@ class GitHubJobListAdaptor(private var context: Context,
     }
 
     override fun getItemId(position: Int): Long {
-        // GitHubJob objects have String IDs...
-        Log.e(this.javaClass.simpleName, "Don't use getItemId() inside of GitHubJobListAdaptor!")
-        return -1
+        return jobList[position].hashCode().toLong()
     }
 
     override fun getItem(position: Int): GitHubJob {
