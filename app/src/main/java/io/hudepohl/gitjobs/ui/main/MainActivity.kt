@@ -65,11 +65,9 @@ class MainActivity : BaseActivity(), MainPresenter.View {
 
             val job = (jobListView.adapter as GitHubJobListAdaptor).getItem(position)
 
-            val jobDetailsActivity = Intent(this, JobDetailActivity::class.java)
-            val bundle = Bundle()
-            bundle.putString(Const.GITHUB_JOB_ID, job.id)
-            jobDetailsActivity.putExtras(bundle)
-            startActivity(jobDetailsActivity)
+            startActivity(
+                    JobDetailActivity.buildIntent(this, job.id)
+            )
         })
 
         jobListView.setOnScrollListener(object : EndlessScrollListener(50, 5) {

@@ -1,5 +1,7 @@
 package io.hudepohl.gitjobs.ui.jobDetail
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html
 import android.widget.Toast
@@ -14,6 +16,16 @@ import kotlinx.android.synthetic.main.activity_job_detail.*
 import javax.inject.Inject
 
 class JobDetailActivity : BaseActivity(), JobDetailPresenter.View {
+
+    companion object {
+        private const val GITHUB_JOB_ID = "GITHUB_JOB_ID"
+
+        fun buildIntent(context: Context, githubJobId: String): Intent {
+            val intent = Intent(context, JobDetailActivity::class.java)
+            intent.putExtra(GITHUB_JOB_ID, githubJobId)
+            return intent
+        }
+    }
 
     @Inject lateinit var presenter: JobDetailPresenter
 
