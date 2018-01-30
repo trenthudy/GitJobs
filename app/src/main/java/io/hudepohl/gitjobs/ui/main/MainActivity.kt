@@ -10,7 +10,6 @@ import io.hudepohl.gitjobs.data.githubJobs.model.GitHubJob
 import io.hudepohl.gitjobs.ui.BaseActivity
 import io.hudepohl.gitjobs.ui.jobDetail.JobDetailActivity
 import io.hudepohl.gitjobs.ui.jobsNearMe.JobsNearMeActivity
-import io.hudepohl.gitjobs.util.Const
 import io.hudepohl.gitjobs.util.EndlessScrollListener
 import io.hudepohl.gitjobs.util.GitHubJobListAdaptor
 import kotlinx.android.synthetic.main.activity_main.*
